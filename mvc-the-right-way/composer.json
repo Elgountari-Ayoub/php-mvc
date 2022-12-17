@@ -1,0 +1,15 @@
+{
+    "name": "adm/mvc-the-right-way",
+    "authors": [
+        {
+            "name": "Elgountari-Ayoub",
+            "email": "elgountariayoub22@gmail.com"
+        }
+    ],
+    "autoload" : {
+        "psr-4" : {
+            "app\\":"./"
+        }
+    },
+    "require": {}
+}
