@@ -1,17 +1,15 @@
 <?php
 
 // namespace app\Core;
-require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 use \app\Core\Application;
+use app\Controllers\SiteController;
 
-$app = new Application();
-$app->router->get('/', function () {
-  return 'Hello world';
-});
-$app->router->get('/contact', function () {
-  return 'Contact Page';
-});
+$app = new Application(dirname(__DIR__));
+$app->router->get('/', [SiteController::class, 'home']);
+$app->router->get('/contact', [SiteController::class, 'contact']);
+$app->router->post('/contact', [SiteController::class, 'handleContact']);
 
 $app->run();
 
