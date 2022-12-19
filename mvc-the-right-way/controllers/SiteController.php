@@ -5,23 +5,24 @@ namespace app\Controllers;
 use app\Core\Application;
 
 use app\Core\Controller;
+use app\Core\Request;
 
 class SiteController extends Controller
 {
-  public  function home()
+  public function home()
   {
     $params = [
       'name' => 'elyoub'
     ];
     return $this->render('home', $params);
   }
-  public  function contact()
+  public function contact()
   {
 
     return $this->render('contact');
   }
-  public static function handleContact()
+  public function handleContact(Request $request)
   {
-    return 'Contact Handling';
+    $body = $request->getBody();
   }
 }

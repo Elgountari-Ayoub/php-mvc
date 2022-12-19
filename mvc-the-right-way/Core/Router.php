@@ -28,7 +28,7 @@ class Router
   public function resolve()
   {
     $path = $this->request->getPath();
-    $method = $this->request->getMethod();
+    $method = $this->request->method();
     $callback = $this->routes[$method][$path] ?? false;
 
     // check if it an invalid request
@@ -41,7 +41,10 @@ class Router
       return $this->renderView($callback);
     }
 
-    return call_user_func($callback);
+    if (is_array($callback)) {
+      $callback[0] = new $callback[0];
+    }
+    return call_user_func($callback, $this->request);
   }
 
   public function renderView($view, $params = [])
